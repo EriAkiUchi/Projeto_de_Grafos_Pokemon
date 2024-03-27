@@ -15,7 +15,8 @@ public:
 	TGrafo(int n);
 	~TGrafo();
 	void insereA(int v, int w, float value);
-	void removeA(int v, int w, float value);
+	void removeA(int v, int w);
+	void insereV();
 	void show();
 	void removeV(int v);
 

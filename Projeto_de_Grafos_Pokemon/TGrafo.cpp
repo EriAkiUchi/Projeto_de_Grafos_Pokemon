@@ -44,9 +44,9 @@ void TGrafo::insereA(int v, int w, float value) {
 }
 
 // remove uma aresta v->w do Grafo
-void TGrafo::removeA(int v, int w, float value) {
+void TGrafo::removeA(int v, int w) {
     // testa se temos a aresta
-    if (adj[v][w] == value) {
+    if (adj[v][w] != INT_MAX) {
         adj[v][w] = INT_MAX;
         m--; // atualiza qtd arestas
     }
@@ -95,6 +95,38 @@ void TGrafo::removeV(int v) {
         adj[i] = adj[i + 1];
     }
 
-    // Atualiza o n�mero de vertices
+    // Atualiza o numero de vertices
     n--;
+}
+
+void TGrafo::insereV() {
+    int vertice = this->n;
+    std::cout << "Indice do novo vertice: " << vertice;
+    int novoTamanho = vertice + 1;
+
+    float** novaMatriz = new float* [novoTamanho];
+    float** matrizAntiga = this->adj;
+    
+    for (int i = 0;i < novoTamanho;i++) {
+        novaMatriz[i] = new float[novoTamanho];
+        for (int j = 0;j < novoTamanho;j++) {
+            if (i < vertice && j < vertice) {
+                //copiar a matriz antiga
+                novaMatriz[i][j] = matrizAntiga[i][j];
+            }
+            else {
+                //iniciar como infinito
+                novaMatriz[i][j] = INT_MAX;
+            }
+        }
+    }
+
+    for (int i = 0;i < this->n;i++) {
+        delete[] matrizAntiga[i];
+    }
+    delete[] matrizAntiga;
+
+    this->adj = novaMatriz;
+    this->n = novoTamanho;
+    
 }
