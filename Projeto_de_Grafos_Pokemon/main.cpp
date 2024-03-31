@@ -9,7 +9,7 @@ int main() {
 	grafo.insereA(2, 0, 2.0);
 
 	int vertice_origem, vertice_chegada; float valor_aresta;
-
+	int categoria_conexidade;
 	int opcao = -1;
 
 	do {
@@ -77,6 +77,25 @@ int main() {
 				grafo.show();
 				break;
 
+			case 9:
+				categoria_conexidade = grafo.categoriaConexidade();
+				switch (categoria_conexidade) {
+					case 3:
+						std::cout << "\nGrafo eh Fortemente Conexo\n";
+						break;
+					case 2:
+						std::cout << "\nGrafo eh Semi-Fortemente Conexo\n";
+						break;
+					case 1:
+						std::cout << "\nGrafo eh Simplesmente Conexo\n";
+						break;
+					case 0:
+						std::cout << "\nGrafo eh Desconexo\n";
+						break;
+				}
+				TGrafo grafoReduzido = grafo.matrizReduzida();
+				grafoReduzido.show();
+				break;
 		}
 
 	} while (opcao != 0);
