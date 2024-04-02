@@ -105,8 +105,8 @@ int main() {
 
 		switch (opcao) {
 			case 1:
-				std::cout << "Qual arquivo deseja ler ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual arquivo deseja ler ?\n";
+				std::cout << "Digite um opcao\n"
 						  << "[1] Arquivo do grafo tipo Metal (Steel)\n"
 					      << "[2] Arquivo do grafo tipo Fantasma (Ghost)\n"
 					      << "[3] Arquivo do grafo tipo Grama (Grass)\n"
@@ -129,7 +129,7 @@ int main() {
 						 grafoFire = readFile("Fire.txt");
 						 break;
 					 case 5:
-						 std::cout << "Digite o path do arquivo: " << std::endl;
+						 std::cout << "Digite o path do arquivo: \n";
 						 std::cin >> fileName;
 						 grafoNovo = readFile(fileName);
 						 break;
@@ -137,11 +137,41 @@ int main() {
 				break;
 
 			case 2:
-
+				std::cout << "Qual arquivo deseja salvar ?\n";
+				std::cout << "Digite um opcao\n"
+					<< "[1] Arquivo do grafo tipo Metal (Steel)\n"
+					<< "[2] Arquivo do grafo tipo Fantasma (Ghost)\n"
+					<< "[3] Arquivo do grafo tipo Grama (Grass)\n"
+					<< "[4] Arquivo do grafo tipo Fogo (Fire)\n"
+					<< "[5] Novo arquivo\nOption: ";
+				std::cin >> opcaoArquivo;
+				std::cin.ignore();
+				std::cout << '\n';
+				switch (opcaoArquivo) {
+				case 1:
+					grafoSteel.storeFile();
+					std::cout << "Grafo Steel salvo em grafo.txt\n";
+					break;
+				case 2:
+					grafoGhost.storeFile();
+					std::cout << "Grafo Ghost salvo em grafo.txt\n";
+					break;
+				case 3:
+					grafoGrass.storeFile();
+					std::cout << "Grafo Grass salvo em grafo.txt\n";
+					break;
+				case 4:
+					grafoFire.storeFile();
+					std::cout << "Grafo Fire salvo em grafo.txt\n";
+					break;
+				case 5:
+					grafoNovo.storeFile();
+					break;
+				}
 				break;
 			case 3:
-				std::cout << "Qual grafo deseja inserir o vertice ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual grafo deseja inserir o vertice ?\n";
+				std::cout << "Digite um opcao\n"
 					<< "[1] Grafo tipo Metal (Steel)\n"
 					<< "[2] Grafo tipo Fantasma (Ghost)\n"
 					<< "[3] Grafo tipo Grama (Grass)\n"
@@ -183,8 +213,8 @@ int main() {
 				std::cin >> valor_aresta;
 				std::cin.ignore();
 
-				std::cout << "Qual grafo deseja inserir a aresta ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual grafo deseja inserir a aresta ?\n";
+				std::cout << "Digite um opcao\n"
 					<< "[1] Grafo tipo Metal (Steel)\n"
 					<< "[2] Grafo tipo Fantasma (Ghost)\n"
 					<< "[3] Grafo tipo Grama (Grass)\n"
@@ -217,8 +247,8 @@ int main() {
 				std::cout << "\nDigite um vertice para apagar: ";
 				std::cin >> vertice_origem;
 
-				std::cout << "Qual grafo deseja remover o vertice ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual grafo deseja remover o vertice ?\n";
+				std::cout << "Digite um opcao\n"
 					<< "[1] Grafo tipo Metal (Steel)\n"
 					<< "[2] Grafo tipo Fantasma (Ghost)\n"
 					<< "[3] Grafo tipo Grama (Grass)\n"
@@ -256,8 +286,8 @@ int main() {
 				std::cin >> vertice_chegada;
 				std::cin.ignore();
 
-				std::cout << "Qual grafo deseja remover a aresta ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual grafo deseja remover a aresta ?\n";
+				std::cout << "Digite um opcao\n"
 					<< "[1] Grafo tipo Metal (Steel)\n"
 					<< "[2] Grafo tipo Fantasma (Ghost)\n"
 					<< "[3] Grafo tipo Grama (Grass)\n"
@@ -287,8 +317,8 @@ int main() {
 				break;
 
 			case 7:
-				std::cout << "Qual arquivo deseja mostrar ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual arquivo deseja mostrar ?\n";
+				std::cout << "Digite um opcao\n"
 						  << "[1] Arquivo do Grafo tipo Metal (Steel)\n"
 					      << "[2] Arquivo do Grafo tipo Fantasma (Ghost)\n"
 					      << "[3] Arquivo do Grafo tipo Grama (Grass)\n"
@@ -311,7 +341,7 @@ int main() {
 						printFile("Fire.txt");
 						break;
 					case 5:
-						std::cout << "Digite o path do arquivo: " << std::endl;
+						std::cout << "Digite o path do arquivo: \n";
 						std::cin >> fileName;
 						printFile(fileName);
 						break;
@@ -319,8 +349,8 @@ int main() {
 				break;
 
 			case 8:
-				std::cout << "Qual grafo deseja mostrar ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual grafo deseja mostrar ?\n";
+				std::cout << "Digite um opcao\n"
 						  << "[1] Grafo tipo Metal (Steel)\n"
 					      << "[2] Grafo tipo Fantasma (Ghost)\n"
 					      << "[3] Grafo tipo Grama (Grass)\n"
@@ -350,8 +380,8 @@ int main() {
 				break;
 
 			case 9:
-				std::cout << "Qual grafo deseja mostrar ?" << std::endl;
-				std::cout << "Digite um opção\n"
+				std::cout << "Qual grafo deseja mostrar ?\n";
+				std::cout << "Digite um opcao\n"
 					<< "[1] Grafo tipo Metal (Steel)\n"
 					<< "[2] Grafo tipo Fantasma (Ghost)\n"
 					<< "[3] Grafo tipo Grama (Grass)\n"

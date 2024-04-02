@@ -27,6 +27,7 @@ public:
 	void show();
 	void showReduzido();
 	void removeV(int v);
+	void storeFile();
 
 	int categoriaConexidade();
 	//-----------------------------------------------------------------------------

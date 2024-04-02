@@ -64,6 +64,29 @@ void TGrafo::removeA(int v, int w) {
     }
 }
 
+void TGrafo::storeFile() {
+    std::ofstream file("grafo.txt");
+    int i = 0;
+    file << graphType << "\n";
+    file << pokeGraphType << "\n";
+    file << n << "\n";
+
+    while (i < n) {
+        file << i << " " << pokeTypes[i] << "\n";
+        i++;
+    }
+    file << m << "\n";
+    i = 0;
+
+    for (int w = 0; w < n; w++) {
+        for (int j = 0; j < n; j++) {
+            if (adj[w][j] != float(INT_MAX))
+                file << w << " " << j << " " << adj[w][j] << "\n";
+        }
+    }
+    file.close();
+}
+
 // Apresenta o Grafo contendo
 // numero de vertices, arestas
 // e a matriz de adjacencia obtida
@@ -181,7 +204,7 @@ int TGrafo::categoriaConexidade() {
 bool TGrafo::fortementeConexo() {
     for (int i = 0;i < this->n;i++) {
         for (int j = 0;j < this->n;j++) {
-            if (i != j && (ehAlcancavel(i, j) || ehAlcancavel(j, i))) {
+            if (i != j && ((!ehAlcancavel(i, j) || !ehAlcancavel(j, i)))) { //se um dos dos for false
                 return false;
             }
         }
@@ -217,9 +240,10 @@ bool TGrafo::ehAlcancavelAuxiliar(int comeco, int fim, bool* visitado) {
 bool TGrafo::semiFortementeConexo() {
     for (int i = 0;i < this->n;i++) {
         for (int j = 0;j < this->n;j++) {
-            if (i != j && !alcancavel(i, j) && !alcancavel(j, i))
+            if (i != j && (!alcancavel(i, j) && !alcancavel(j, i))) { //se os dois forem false
                 return false;
-        }
+            }
+        }   
     }
     return true;
 }
@@ -314,38 +338,32 @@ void TGrafo::grafoDirecionadoParaNaoDIrecionado() {
 //-----------------------------------------------------------------------------
 
 TGrafo& TGrafo::matrizReduzida() {
-    std::vector<std::vector<int>> scc = obterComponentesFConexos(this->adj); //determinar os componentes fortemente conexos
+    std::vector<std::vector<int>> componentesFConexos = obterComponentesFConexos(this->adj); //determinar os componentes fortemente conexos
 
-    int tamanho = scc.size(); //tamanho da matriz nova
+    int tamanho = componentesFConexos.size(); //tamanho da matriz nova
 
-    float** sccMatriz = new float* [tamanho];
+    float** matrizNova = new float* [tamanho];
     for (int i = 0; i < tamanho; ++i) {
-        sccMatriz[i] = new float[tamanho];
+        matrizNova[i] = new float[tamanho];
         for (int j = 0; j < tamanho; ++j)
-            sccMatriz[i][j] = float(INT_MAX);  // inicializando matriz nova
+            matrizNova[i][j] = float(INT_MAX);  // inicializando matriz nova
     }
 
-    // Itera em cada componente fortemente conectado
-    for (int i = 0; i < tamanho; ++i) {
+    
+    for (int i = 0; i < tamanho; ++i) {// Itera em cada componente fortemente conectado
 
-        // Itera em cada vertice do componente fortemente conectado
-        for (int k : scc[i]) {
+        for (int k : componentesFConexos[i]) {// Itera em cada vertice do componente fortemente conectado            
 
-            // checa quem tinha aresta com ele na matrix original
-            for (int vizinho = 0; vizinho < n; ++vizinho) {
+            for (int vizinho = 0; vizinho < n; ++vizinho) {// checa quem tinha aresta com ele na matrix original              
 
-                //se tinha aresta na matriz original
-                if (this->adj[k][vizinho] != 0) {
+                if (this->adj[k][vizinho] != float(INT_MAX)) {//se tinha aresta na matriz original                    
 
-                    //acha qual o componente com qual ele tem uma aresta
-                    for (int j = 0; j < tamanho; ++j) {
+                    for (int j = 0; j < tamanho; ++j) {//acha qual o componente com qual ele tem uma aresta                        
 
-                        // se achar o componente:
-                        if (std::find(scc[j].begin(), scc[j].end(), vizinho) != scc[j].end()) {
-
-                            // checa antes se não é ele mesmo
-                            if (i != j) {
-                                sccMatriz[i][j] = 1; //adiciona a aresta na matriz nova
+                        if (std::find(componentesFConexos[j].begin(), componentesFConexos[j].end(), vizinho) != componentesFConexos[j].end()) {
+                         // se achou o componente 
+                            if (i != j) {// antes verifica se não é ele mesmo
+                                matrizNova[i][j] = 1; //adiciona a aresta na matriz nova
                                 break;
                             }
                         }
@@ -356,9 +374,8 @@ TGrafo& TGrafo::matrizReduzida() {
     }
 
     TGrafo* grafoReduzido = new TGrafo(tamanho,"null");
-    grafoReduzido->adj = sccMatriz;
-    grafoReduzido->n = (tamanho);
-    grafoReduzido->RecountA();
+    grafoReduzido->adj = matrizNova; grafoReduzido->n = (tamanho);    
+    grafoReduzido->RecountA(); //recontar as arestas do grafo reduzido
     return *grafoReduzido;
 }
 
@@ -382,7 +399,7 @@ std::vector<std::vector<int>> TGrafo::obterComponentesFConexos(float** adj) {
             reverse_adj_matrix[i][j] = adj[j][i];
 
     //Pop de todos os vertices da pilha e faz busca em profundidade no grafo invertido
-    visitado.assign(n, false);//setar vetor inteiro como falso
+    visitado.assign(n, false);//reinicia vetor inteiro como false
     std::vector<std::vector<int>> componentes_fortemente_conectados;
     while (!pilha.empty())
     {
@@ -390,9 +407,9 @@ std::vector<std::vector<int>> TGrafo::obterComponentesFConexos(float** adj) {
         pilha.pop();
         if (!visitado[k])
         {
-            std::vector<int> scc;
-            buscaProfund2(reverse_adj_matrix, k, visitado, scc, n);
-            componentes_fortemente_conectados.push_back(scc);
+            std::vector<int> componentesFConexos;
+            buscaProfund2(reverse_adj_matrix, k, visitado, componentesFConexos, n);
+            componentes_fortemente_conectados.push_back(componentesFConexos);
         }
     }
     return componentes_fortemente_conectados;
@@ -407,12 +424,12 @@ void TGrafo::buscaProfund1(float** adj, int k, std::stack<int>& pilha, std::vect
     pilha.push(k);
 }
 
-void TGrafo::buscaProfund2(float** adj, int k, std::vector<bool>& visitado, std::vector<int>& scc, int n) {
+void TGrafo::buscaProfund2(float** adj, int k, std::vector<bool>& visitado, std::vector<int>& componentesFConexos, int n) {
     visitado[k] = true;
-    scc.push_back(k);
+    componentesFConexos.push_back(k);
     for (int vizinho = 0; vizinho < n; ++vizinho)
         if (adj[k][vizinho] != 0 && !visitado[vizinho])
-            buscaProfund2(adj, vizinho, visitado, scc, n);
+            buscaProfund2(adj, vizinho, visitado, componentesFConexos, n);
 
 }
 
@@ -421,6 +438,6 @@ void TGrafo::RecountA()//essa reconta as arestas
     this->m = 0;
     for (int i = 0; i < this->n; i++)
         for (int j = 0; j < this->n; j++)
-            if (this->adj[i][j] != 0)
+            if (this->adj[i][j] != float(INT_MAX))
                 m++;
 }
