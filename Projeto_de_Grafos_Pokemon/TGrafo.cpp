@@ -114,6 +114,29 @@ void TGrafo::show() {
     std::cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------";
     std::cout << "\n\nfim da impressao do grafo." << std::endl;
 }
+void TGrafo::showMatrizSemRotulo() { //funcao para pegar as arestas para fazer o grafo no graphonline
+    for (int i = 0; i < n; i++){
+        std::cout << "\n";
+        for (int w = 0; w < n; w++) {
+            if (w == n - 1) {
+                if (adj[i][w] == INT_MAX)
+                    std::cout << "0";
+
+                else 
+                    std::cout << "1";
+            }
+
+            else {
+                if (adj[i][w] == INT_MAX)
+                    std::cout << "0" << ",";
+
+                else 
+                    std::cout << "1" << ",";
+            }
+        }
+    }
+    std::cout << "\nfim da impressao do grafo." << std::endl;
+}
 
 void TGrafo::showReduzido() {
     std::cout << "n: " << n << std::endl;

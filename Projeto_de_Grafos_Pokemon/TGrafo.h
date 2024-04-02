@@ -26,6 +26,7 @@ public:
 	void insereV();
 	void show();
 	void showReduzido();
+	void showMatrizSemRotulo();
 	void removeV(int v);
 	void storeFile();
 

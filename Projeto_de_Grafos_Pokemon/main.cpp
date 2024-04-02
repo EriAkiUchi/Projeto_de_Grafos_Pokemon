@@ -362,18 +362,28 @@ int main() {
 				switch (opcaoArquivo) {
 					case 1:
 						grafoSteel.show();
+						//std::cout << "\n\n";
+						//grafoSteel.showMatrizSemRotulo();
 						break;
 					case 2:
 						grafoGhost.show();
+						//std::cout << "\n\n";
+						//grafoGhost.showMatrizSemRotulo();
 						break;
 					case 3:
 						grafoGrass.show();
+						//std::cout << "\n\n";
+						//grafoGrass.showMatrizSemRotulo();
 						break;
 					case 4:
 						grafoFire.show();
+						//std::cout << "\n\n";
+						//grafoFire.showMatrizSemRotulo();
 						break;
 					case 5:
 						grafoNovo.show();
+						//std::cout << "\n\n";
+						//grafoNovo.showMatrizSemRotulo();
 						break;
 				}
 				std::cout << "\nGrafo printado com sucesso";
