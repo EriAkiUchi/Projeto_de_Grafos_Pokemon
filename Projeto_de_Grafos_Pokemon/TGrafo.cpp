@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -9,18 +10,24 @@
 #include "TGrafo.h"
 
 // Construtor do TGrafo, responsavel por 
-TGrafo::TGrafo(int n) {
+TGrafo::TGrafo(int n, std::string pokeGraphType) {
     this->n = n;
     this->m = 0;
+    this->graphType = 7;
+    this->pokeGraphType = pokeGraphType;
+
     // aloca da matriz do TGrafo
     float** adjac = new float* [n];
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
+        pokeTypes.push_back("null");
+
         adjac[i] = new float[n];
+    }
     adj = adjac;
     // Inicia a matriz com zeros
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
-            adj[i][j] = INT_MAX;
+            adj[i][j] = float(INT_MAX);
 }
 
 // Destructor, responsavel por
@@ -34,11 +41,15 @@ TGrafo::~TGrafo() {
     std::cout << "espaco liberado" << std::endl;
 }
 
+void TGrafo::insereVName(int v, std::string name) {
+    pokeTypes[v] = name;
+}
+
 // Insere uma aresta no Grafo tal que
 // v eh adjacente a w
 void TGrafo::insereA(int v, int w, float value) {
     // testa se nao temos a aresta
-    if (adj[v][w] == INT_MAX) {
+    if (adj[v][w] == float(INT_MAX)) {
         adj[v][w] = value;
         m++; // atualiza qtd arestas
     }
@@ -47,8 +58,8 @@ void TGrafo::insereA(int v, int w, float value) {
 // remove uma aresta v->w do Grafo
 void TGrafo::removeA(int v, int w) {
     // testa se temos a aresta
-    if (adj[v][w] != INT_MAX) {
-        adj[v][w] = INT_MAX;
+    if (adj[v][w] != float(INT_MAX)) {
+        adj[v][w] = float(INT_MAX);
         m--; // atualiza qtd arestas
     }
 }
@@ -57,14 +68,39 @@ void TGrafo::removeA(int v, int w) {
 // numero de vertices, arestas
 // e a matriz de adjacencia obtida
 void TGrafo::show() {
+    std::cout << "Numero de Vertices: " << n << std::endl;
+    std::cout << "Numero de Arestas: " << m << std::endl;
+    std::cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------------";
+    std::cout << "\n\t\t";
+    for (int b = 0; b < n; b++) {
+        std::cout << pokeTypes[b][0] << pokeTypes[b][1] << pokeTypes[b][2] << "\t|" << "";                          
+    }
+    for (int i = 0; i < n; i++) {
+        std::cout << "\n";
+        std::cout << pokeGraphType << "/" << pokeTypes[i] << "\t|" << "";
+        for (int w = 0; w < n; w++)
+            if (adj[i][w] != float(INT_MAX)) {                                          
+                // Print edge weight               
+                std::cout << adj[i][w] << "\t|" << "";
+            }
+            else {
+                // Print "inf" for infinity
+                std::cout << "inf" << "\t|" << "";
+            }
+    }
+    std::cout << "\n-----------------------------------------------------------------------------------------------------------------------------------------------------------------";
+    std::cout << "\n\nfim da impressao do grafo." << std::endl;
+}
+
+void TGrafo::showReduzido() {
     std::cout << "n: " << n << std::endl;
     std::cout << "m: " << m << std::endl;
     for (int i = 0; i < n; i++) {
         std::cout << "\n";
         for (int w = 0; w < n; w++)
-            if (adj[i][w] != INT_MAX)
-                std::cout << "Adj[" << i << "," << w << "]= " << adj[i][w] << " ";
-            else std::cout << "Adj[" << i << "," << w << "]= inf" << " ";
+            if (adj[i][w] == 1)
+                std::cout << "Adj[" << i << "," << w << "]= 1" << " ";
+            else std::cout << "Adj[" << i << "," << w << "]= 0" << " ";
     }
     std::cout << "\nfim da impressao do grafo." << std::endl;
 }
@@ -75,8 +111,8 @@ void TGrafo::removeV(int v) {
         return;
     }
     for (int i = 0; i < n; i++) {
-        if (adj[v][i] != INT_MAX) {
-            adj[v][i] = INT_MAX;
+        if (adj[v][i] != float(INT_MAX)) {
+            adj[v][i] = float(INT_MAX);
             m--;
         }
     }
@@ -117,7 +153,7 @@ void TGrafo::insereV() {
             }
             else {
                 //iniciar como infinito
-                novaMatriz[i][j] = INT_MAX;
+                novaMatriz[i][j] = float(INT_MAX);
             }
         }
     }
@@ -168,7 +204,7 @@ bool TGrafo::ehAlcancavelAuxiliar(int comeco, int fim, bool* visitado) {
     visitado[comeco] = true;
 
     for (int i = 0;i < this->n;i++) {
-        if (!visitado[i] && adj[comeco][i] == INT_MAX) {
+        if (!visitado[i] && adj[comeco][i] == float(INT_MAX)) {
             if (ehAlcancavelAuxiliar(i, fim, visitado))
                 return true;
         }
@@ -202,7 +238,7 @@ bool TGrafo::alcancavel(int comeco, int fim) {
 
         //verifica se existe uma aresta direcionada de v atual e vizinhos nao vizitados
         for (int vizinho = 0;vizinho < this->n;vizinho++) {
-            if (adj[atual][vizinho] != INT_MAX && !visitado[vizinho]) {
+            if (adj[atual][vizinho] != float(INT_MAX) && !visitado[vizinho]) {
                 
                 pilha.push(vizinho);
                 visitado[vizinho] = true;
@@ -249,7 +285,7 @@ bool TGrafo::ehConexo() {
 
         //percorre todos os vizinhos
         for (int vizinho = 0;vizinho < this->n;vizinho++) {
-            if (adj[vertice][vizinho] != INT_MAX && !visitado[vizinho]) {
+            if (adj[vertice][vizinho] != float(INT_MAX) && !visitado[vizinho]) {
                 fila.push(vizinho);
                 visitado[vizinho] = true;
             }
@@ -270,12 +306,13 @@ bool TGrafo::ehConexo() {
 void TGrafo::grafoDirecionadoParaNaoDIrecionado() {
     for (int i = 0;i < this->n;i++) {
         for (int j = 0;j < this->n;j++) {
-            if (this->adj[i][j] != INT_MAX)
+            if (this->adj[i][j] != float(INT_MAX))
                 this->adj[j][i] = this->adj[i][j];
         }
     }
 }
 //-----------------------------------------------------------------------------
+
 TGrafo& TGrafo::matrizReduzida() {
     std::vector<std::vector<int>> scc = obterComponentesFConexos(this->adj); //determinar os componentes fortemente conexos
 
@@ -285,7 +322,7 @@ TGrafo& TGrafo::matrizReduzida() {
     for (int i = 0; i < tamanho; ++i) {
         sccMatriz[i] = new float[tamanho];
         for (int j = 0; j < tamanho; ++j)
-            sccMatriz[i][j] = INT_MAX;  // inicializando matriz nova
+            sccMatriz[i][j] = float(INT_MAX);  // inicializando matriz nova
     }
 
     // Itera em cada componente fortemente conectado
@@ -318,7 +355,7 @@ TGrafo& TGrafo::matrizReduzida() {
         }
     }
 
-    TGrafo* grafoReduzido = new TGrafo(tamanho);
+    TGrafo* grafoReduzido = new TGrafo(tamanho,"null");
     grafoReduzido->adj = sccMatriz;
     grafoReduzido->n = (tamanho);
     grafoReduzido->RecountA();
