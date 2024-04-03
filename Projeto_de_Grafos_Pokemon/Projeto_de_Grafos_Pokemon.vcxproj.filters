@@ -27,4 +27,10 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Steel.txt" />
+    <Text Include="Grass.txt" />
+    <Text Include="Ghost.txt" />
+    <Text Include="Fire.txt" />
+  </ItemGroup>
 </Project>

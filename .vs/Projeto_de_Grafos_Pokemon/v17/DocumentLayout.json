@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|solutionrelative:Projeto_de_Grafos_Pokemon\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\TGrafo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|solutionrelative:Projeto_de_Grafos_Pokemon\\TGrafo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|solutionrelative:Projeto_de_Grafos_Pokemon\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7DA1D7B4-3B2B-4B5D-B435-A3198C8F943D}|Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon.vcxproj|C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\TGrafo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -22,22 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\main.cpp",
-              "RelativeDocumentMoniker": "Projeto_de_Grafos_Pokemon\\main.cpp",
-              "ToolTip": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\main.cpp",
-              "RelativeToolTip": "Projeto_de_Grafos_Pokemon\\main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-27T17:31:18.274Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -65,12 +51,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\main.cpp",
+              "RelativeDocumentMoniker": "Projeto_de_Grafos_Pokemon\\main.cpp",
+              "ToolTip": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\main.cpp",
+              "RelativeToolTip": "Projeto_de_Grafos_Pokemon\\main.cpp",
+              "ViewState": "AQIAAF8BAAAAAAAAAAAAAG4BAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-27T17:31:18.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "TGrafo.cpp",
               "DocumentMoniker": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\TGrafo.cpp",
               "RelativeDocumentMoniker": "Projeto_de_Grafos_Pokemon\\TGrafo.cpp",
               "ToolTip": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\TGrafo.cpp",
               "RelativeToolTip": "Projeto_de_Grafos_Pokemon\\TGrafo.cpp",
-              "ViewState": "AQIAAGIBAAAAAAAAAAAAAAsBAAABAAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIUAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-27T17:30:03.671Z",
               "EditorCaption": ""
@@ -83,7 +82,7 @@
               "RelativeDocumentMoniker": "Projeto_de_Grafos_Pokemon\\TGrafo.h",
               "ToolTip": "C:\\Users\\ericu\\source\\repos\\Projeto_de_Grafos_Pokemon\\Projeto_de_Grafos_Pokemon\\TGrafo.h",
               "RelativeToolTip": "Projeto_de_Grafos_Pokemon\\TGrafo.h",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAB8AAAARAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABwAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-27T17:28:44.761Z",
               "EditorCaption": ""

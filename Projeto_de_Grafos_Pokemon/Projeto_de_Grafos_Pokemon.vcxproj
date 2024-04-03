@@ -133,6 +133,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TGrafo.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Fire.txt" />
+    <Text Include="Ghost.txt" />
+    <Text Include="Grass.txt" />
+    <Text Include="Steel.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

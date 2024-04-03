@@ -10,15 +10,25 @@ class TGrafo {
 private:
 	int n; // quantidade de vertices
 	int m; // quantidade de arestas
+	int graphType;
+	std::vector<std::string> pokeTypes; // vetor para armazenar o peso dos vertices (tipos de pokemon)
+	std::string pokeGraphType; // string para definir o tipo do grafo, isto é, para definir quais tipos combinados serão analizados
 	float** adj; //matriz de adjacencia
+
 public:
-	TGrafo(int n);
+	TGrafo(int n, std::string graphType);
 	~TGrafo();
+
+	void insereVName(int v, std::string name);
+
 	void insereA(int v, int w, float value);
 	void removeA(int v, int w);
 	void insereV();
 	void show();
+	void showReduzido();
+	void showMatrizSemRotulo();
 	void removeV(int v);
+	void storeFile();
 
 	int categoriaConexidade();
 	//-----------------------------------------------------------------------------
