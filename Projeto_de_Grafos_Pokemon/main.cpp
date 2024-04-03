@@ -3,6 +3,12 @@
 #include <string>
 #include "TGrafo.h"
 
+/*
+Eric Akio Uchiyamada						RA: 10395287
+Pedro Loureiro Morone Branco Volpe			RA: 10395922
+Oliver Kieran Galvão McCormack				RA: 10395672
+*/
+
 // Função para ler um arquivo .txt personalizado de entrada
 TGrafo& readFile(std::string fileName) {
 	std::ifstream file;

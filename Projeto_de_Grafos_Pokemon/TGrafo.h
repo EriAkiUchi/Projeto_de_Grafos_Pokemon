@@ -5,6 +5,11 @@
 #include <vector>
 #include <stack>
 
+/*
+Eric Akio Uchiyamada						RA: 10395287
+Pedro Loureiro Morone Branco Volpe			RA: 10395922
+Oliver Kieran Galvão McCormack				RA: 10395672
+*/
 
 class TGrafo {
 private:
