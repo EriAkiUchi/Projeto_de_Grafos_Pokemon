@@ -102,6 +102,7 @@ int main() {
 					<< "[7] Mostrar conteudo do arquivo\n"
 					<< "[8] Mostrar grafo\n"
 					<< "[9] Apresentar a conexidade do grafo e o grafo reduzido\n"
+					<< "[10] Coloracao de Vertices por Sequencia\n"
 					<< "[0] Encerrar a aplicacao\nOption: ";
 		std::cin >> opcao;
 		std::cin.ignore();
@@ -506,6 +507,36 @@ int main() {
 					grafoReduzidoNovo = grafoNovo.matrizReduzida();
 					grafoReduzidoNovo.showReduzido();
 					break;
+				}
+				break;
+
+			case 10:
+				std::cout << "Qual grafo deseja mostrar ?\n";
+				std::cout << "Digite um opcao\n"
+					<< "[1] Grafo tipo Metal (Steel)\n"
+					<< "[2] Grafo tipo Fantasma (Ghost)\n"
+					<< "[3] Grafo tipo Grama (Grass)\n"
+					<< "[4] Grafo tipo Fogo (Fire)\n"
+					<< "[5] Novo Grafo\nOption: ";
+				std::cin >> opcaoArquivo;
+				std::cin.ignore();
+				std::cout << '\n';
+				switch (opcaoArquivo) {
+					case 1:
+						grafoSteel.coloracaoSequencia();
+						break;
+
+					case 2:
+						grafoGhost.coloracaoSequencia();
+						break;
+
+					case 3:
+						grafoGrass.coloracaoSequencia();
+						break;
+
+					case 4:
+						grafoFire.coloracaoSequencia();
+						break;
 				}
 				break;
 		}

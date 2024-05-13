@@ -52,6 +52,8 @@ public:
 	void buscaProfund1(float** adj, int k, std::stack<int>& pilha, std::vector<bool>& visitado, int n);
 	void buscaProfund2(float** adj, int k, std::vector<bool>& visitado, std::vector<int>& scc, int n);
 	void RecountA();
+	//-----------------------------------------------------------------------------
+	void coloracaoSequencia();
 };
 
 #endif

@@ -470,3 +470,48 @@ void TGrafo::RecountA()//essa reconta as arestas
             if (this->adj[i][j] != float(INT_MAX))
                 m++;
 }
+
+//-----------------------------------------------------------------------------
+
+void TGrafo::coloracaoSequencia() {
+    // Vetor para armazenar a cor de cada vértice
+    // Inicialmente, todos os vértices estão sem cor (0)
+    int* cor = new int[n] {0};
+
+    // Atribui a cor 1 ao primeiro vértice
+    cor[0] = 1;
+
+    // Percorre os demais vértices
+    for (int v = 1; v < n; v++) {
+        // Cria um array booleano para marcar as cores já usadas pelos vértices adjacentes
+        bool* cores_usadas = new bool[n] {false};
+
+        // Verifica as cores dos vértices adjacentes
+        for (int u = 0; u < n; u++) {
+            if (adj[v][u] != float(INT_MAX) && cor[u] != 0) {
+                cores_usadas[cor[u]] = true;
+            }
+        }
+
+        // Encontra a primeira cor disponível (que não foi usada pelos vértices adjacentes)
+        int cor_disponivel = 1;
+        while (cores_usadas[cor_disponivel]) {
+            cor_disponivel++;
+        }
+
+        // Atribui a cor disponível ao vértice atual
+        cor[v] = cor_disponivel;
+
+        // Libera a memória do vetor de cores usadas
+        delete[] cores_usadas;
+    }
+
+    // Imprime o resultado da coloração
+    std::cout << "\nColoracao dos vertices por Sequencia:\n";
+    for (int v = 0; v < n; v++) {
+        std::cout << "Vertice " << v+1 << ": Cor " << cor[v] << std::endl;
+    }
+
+    // Libera a memória do vetor de cores
+    delete[] cor;
+}
