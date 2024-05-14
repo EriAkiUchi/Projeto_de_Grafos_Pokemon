@@ -515,3 +515,54 @@ void TGrafo::coloracaoSequencia() {
     // Libera a memória do vetor de cores
     delete[] cor;
 }
+
+void TGrafo::printVertexDegree(const std::string& type) {
+    int typeIndex = findTypeIndex(type);
+    if (typeIndex != -1) {
+        int degree = 0;
+        for (int i = 0; i < n; i++) {
+            if (adj[typeIndex][i] > 0) {
+                degree++;
+            }
+            if (adj[i][typeIndex] > 0) {
+                degree++;
+            }
+        }
+        std::cout << "Degree of vertex " << type << ": " << degree << std::endl;
+    }
+    else {
+        std::cout << "Type not found." << std::endl;
+    }
+}
+
+int TGrafo::findTypeIndex(const std::string& type) {
+    for (int i = 0; i < pokeTypes.size(); i++) {
+        if (pokeTypes[i] == type) {
+            return i;
+        }
+    }
+    return -1;  // Type not found
+}
+
+void TGrafo::getWeaknessesAndAdvantages(const std::string& type) {
+    int typeIndex = findTypeIndex(type);
+
+    if (typeIndex != -1) {
+        std::string advantages = "Advantages:\t";
+        std::string weaknesses = "Weaknesses:\t";
+
+        for (int i = 0; i < n; i++) {
+            if (adj[i][typeIndex] >= 2.0 && adj[i][typeIndex] != float(INT_MAX)) {
+                advantages += pokeTypes[i] + "\t";
+            }
+            if (adj[typeIndex][i] >= 2.0 && adj[typeIndex][i] != float(INT_MAX)) {
+                weaknesses += pokeTypes[i] + "\t";
+            }
+        }
+
+        std::cout << advantages << "\n" << weaknesses << std::endl;
+    }
+    else {
+        std::cout << "Type not found." << std::endl;
+    }
+}

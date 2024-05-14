@@ -6,10 +6,10 @@
 /*
 Eric Akio Uchiyamada						RA: 10395287
 Pedro Loureiro Morone Branco Volpe			RA: 10395922
-Oliver Kieran Galv„o McCormack				RA: 10395672
+Oliver Kieran Galv√£o McCormack				RA: 10395672
 */
 
-// FunÁ„o para ler um arquivo .txt personalizado de entrada
+// Fun√ß√£o para ler um arquivo .txt personalizado de entrada
 TGrafo& readFile(std::string fileName) {
 	std::ifstream file;
 	std::string line;
@@ -18,7 +18,7 @@ TGrafo& readFile(std::string fileName) {
 	std::getline(file, line); // Linha para ler o tipo do grafo (no nosso caso tipo 7) 
 	std::getline(file, line); // Linha para ler o tipo de pokemon a ser analizado 
 	std::string newPokeGraphType = line;
-	std::getline(file, line); // Linha para receber a quantidade de vÈrtices 
+	std::getline(file, line); // Linha para receber a quantidade de v√©rtices 
 	int numVertic = std::stoi(line);
 	TGrafo* newGraph = new TGrafo(numVertic, newPokeGraphType);
 
@@ -29,7 +29,7 @@ TGrafo& readFile(std::string fileName) {
 	if (file.is_open()) {
 		while (i < numVertic) {
 			file >> vertice >> verticeNome;
-			verticeNome.erase(remove(verticeNome.begin(), verticeNome.end(), ' '), verticeNome.end()); // Remove possiveis espaÁos da string
+			verticeNome.erase(remove(verticeNome.begin(), verticeNome.end(), ' '), verticeNome.end()); // Remove possiveis espa√ßos da string
 			newGraph->insereVName(vertice, verticeNome);
 			i++;
 		}
@@ -70,7 +70,7 @@ void printFile(std::string fileName) {
 
 int main() {
 	
-	// InicializaÁ„o dos grafos
+	// Inicializa√ß√£o dos grafos
 	std::string fileName;
 	TGrafo grafoSteel(0, "null");
 	TGrafo grafoGhost(0, "null");
@@ -84,6 +84,7 @@ int main() {
 	TGrafo grafoReduzidoFire(0, "null");
 	TGrafo grafoReduzidoNovo(0, "null");
 	//
+	std::string type;
 	int vertice_origem, vertice_chegada; float valor_aresta;
 	int categoria_conexidade;
 	int opcao = -1, opcaoArquivo = -1;
@@ -91,7 +92,7 @@ int main() {
 	do {
 
 		std::cout << "\n****************************************************\n";
-		std::cout << "*** Analise das combinaÁıes de tipos dos Pokemons ***\n"
+		std::cout << "*** Analise das combina√ß√µes de tipos dos Pokemons ***\n"
 					<< "Digite uma opcao\n"
 					<< "[1] Ler dados de um arquivo e Criar Matriz de Adjacencia\n"
 					<< "[2] Gravar Matriz de Adjacencia no arquivo grafo.txt\n"
@@ -103,6 +104,8 @@ int main() {
 					<< "[8] Mostrar grafo\n"
 					<< "[9] Apresentar a conexidade do grafo e o grafo reduzido\n"
 					<< "[10] Coloracao de Vertices por Sequencia\n"
+					<< "[11] Grau total de um tipo em todos os grafos\n"
+					<< "[12] Vantagens e Desvantagens de um dado tipo\n"
 					<< "[0] Encerrar a aplicacao\nOption: ";
 		std::cin >> opcao;
 		std::cin.ignore();
@@ -538,6 +541,41 @@ int main() {
 						grafoFire.coloracaoSequencia();
 						break;
 				}
+				break;
+			case 11:
+
+				std::cout << "Digite o tipo de v√©rtice para verificar o grau: ";
+				std::cin >> type;
+				std::cout << "Grau total do vertice " << type << " no grafo de Steel\n";
+				grafoSteel.printVertexDegree(type);
+				std::cout << "Grau total do vertice " << type << " no grafo de Ghost\n";
+				grafoGhost.printVertexDegree(type);
+				std::cout << "Grau total do vertice " << type << " no grafo de Grass\n";
+				grafoGrass.printVertexDegree(type);
+				std::cout << "Grau total do vertice " << type << " no grafo de Fire\n";
+				grafoFire.printVertexDegree(type);
+				std::cout << "Grau total do vertice " << type << " no grafo novo\n";
+				grafoNovo.printVertexDegree(type);
+
+				break;
+
+			case 12:
+				std::string searchType;
+				std::cout << "Enter the Pokemon type to search for weaknesses and advantages: ";
+				std::cin >> searchType;
+				std::cin.ignore();
+
+				std::cout << "Weaknesses and Advantages for type " << searchType << ":\n";
+				std::cout << "In Steel graph: \n";
+				grafoSteel.getWeaknessesAndAdvantages(searchType);
+				std::cout << "In Ghost graph: \n";
+				grafoGhost.getWeaknessesAndAdvantages(searchType);
+				std::cout << "In Grass graph: \n";
+				grafoGrass.getWeaknessesAndAdvantages(searchType);
+				std::cout << "In Fire graph: \n";
+				grafoFire.getWeaknessesAndAdvantages(searchType);
+				std::cout << "In the new graph: \n";
+				grafoNovo.getWeaknessesAndAdvantages(searchType);
 				break;
 		}
 

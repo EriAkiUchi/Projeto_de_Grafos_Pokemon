@@ -8,7 +8,7 @@
 /*
 Eric Akio Uchiyamada						RA: 10395287
 Pedro Loureiro Morone Branco Volpe			RA: 10395922
-Oliver Kieran Galv„o McCormack				RA: 10395672
+Oliver Kieran Galv√£o McCormack				RA: 10395672
 */
 
 class TGrafo {
@@ -17,7 +17,7 @@ private:
 	int m; // quantidade de arestas
 	int graphType;
 	std::vector<std::string> pokeTypes; // vetor para armazenar o peso dos vertices (tipos de pokemon)
-	std::string pokeGraphType; // string para definir o tipo do grafo, isto È, para definir quais tipos combinados ser„o analizados
+	std::string pokeGraphType; // string para definir o tipo do grafo, isto √©, para definir quais tipos combinados ser√£o analizados
 	float** adj; //matriz de adjacencia
 
 public:
@@ -54,6 +54,9 @@ public:
 	void RecountA();
 	//-----------------------------------------------------------------------------
 	void coloracaoSequencia();
+	void printVertexDegree(const std::string& type);
+	void getWeaknessesAndAdvantages(const std::string& type);
+	int findTypeIndex(const std::string& type);
 };
 
 #endif
