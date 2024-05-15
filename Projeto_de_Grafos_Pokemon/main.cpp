@@ -546,15 +546,15 @@ int main() {
 
 				std::cout << "Digite o tipo de vértice para verificar o grau: ";
 				std::cin >> type;
-				std::cout << "Grau total do vertice " << type << " no grafo de Steel\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Steel\n";
 				grafoSteel.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo de Ghost\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Ghost\n";
 				grafoGhost.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo de Grass\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Grass\n";
 				grafoGrass.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo de Fire\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Fire\n";
 				grafoFire.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo novo\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo novo\n";
 				grafoNovo.printVertexDegree(type);
 
 				break;
@@ -566,15 +566,15 @@ int main() {
 				std::cin.ignore();
 
 				std::cout << "Weaknesses and Advantages for type " << searchType << ":\n";
-				std::cout << "In Steel graph: \n";
+				std::cout << "\nIn Steel graph: \n";
 				grafoSteel.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In Ghost graph: \n";
+				std::cout << "\nIn Ghost graph: \n";
 				grafoGhost.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In Grass graph: \n";
+				std::cout << "\nIn Grass graph: \n";
 				grafoGrass.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In Fire graph: \n";
+				std::cout << "\nIn Fire graph: \n";
 				grafoFire.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In the new graph: \n";
+				std::cout << "\nIn the new graph: \n";
 				grafoNovo.getWeaknessesAndAdvantages(searchType);
 				break;
 		}
