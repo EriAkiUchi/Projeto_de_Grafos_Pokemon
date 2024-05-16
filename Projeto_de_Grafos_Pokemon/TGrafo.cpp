@@ -566,3 +566,25 @@ void TGrafo::getWeaknessesAndAdvantages(const std::string& type) {
         std::cout << "Type not found." << std::endl;
     }
 }
+
+void TGrafo::sumOfWeaknessesAndResistances()
+{
+    float sum = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (adj[i][j] == float(INT_MAX))
+            {
+                sum += 1;
+            }
+            else
+            {
+                sum += adj[i][j];
+            }
+        }
+    }
+
+    std::cout << sum;
+}
