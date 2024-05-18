@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 #include "TGrafo.h"
 
 /*
@@ -93,7 +94,7 @@ int main() {
 	do {
 
 		std::cout << "\n****************************************************\n";
-		std::cout << "*** Analise das combinações de tipos dos Pokemons ***\n"
+		std::cout << "*** Analise das combinacoes de tipos dos Pokemons ***\n"
 					<< "Digite uma opcao\n"
 					<< "[1] Ler dados de um arquivo e Criar Matriz de Adjacencia\n"
 					<< "[2] Gravar Matriz de Adjacencia no arquivo grafo.txt\n"

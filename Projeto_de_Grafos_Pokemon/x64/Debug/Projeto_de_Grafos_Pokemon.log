@@ -1,5 +1,3 @@
 ﻿  TGrafo.cpp
-C:\Users\win\OneDrive\Documentos\GitHub\Projeto_de_Grafos_Pokemon\Projeto_de_Grafos_Pokemon\TGrafo.cpp(372,17): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-  main.cpp
-  Gerando Código...
-  Projeto_de_Grafos_Pokemon.vcxproj -> C:\Users\win\OneDrive\Documentos\GitHub\Projeto_de_Grafos_Pokemon\x64\Debug\Projeto_de_Grafos_Pokemon.exe
+C:\Users\ericu\source\repos\Projeto_de_Grafos_Pokemon\Projeto_de_Grafos_Pokemon\TGrafo.cpp(372,17): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+  Projeto_de_Grafos_Pokemon.vcxproj -> C:\Users\ericu\source\repos\Projeto_de_Grafos_Pokemon\x64\Debug\Projeto_de_Grafos_Pokemon.exe
