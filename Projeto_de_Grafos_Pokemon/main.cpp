@@ -547,7 +547,7 @@ int main() {
 				break;
 			case 11:
 
-				std::cout << "Digite o tipo de vértice para verificar o grau: ";
+				std::cout << "Digite o tipo de vertice para verificar o grau: ";
 				std::cin >> type;
 				std::cout << "\nGrau total do vertice " << type << " no grafo de Steel\n";
 				grafoSteel.printVertexDegree(type);

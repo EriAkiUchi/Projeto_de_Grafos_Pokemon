@@ -15,7 +15,7 @@ Pedro Loureiro Morone Branco Volpe			RA: 10395922
 Oliver Kieran Galvão McCormack				RA: 10395672
 */
 
-// Construtor do TGrafo, responsavel por 
+// Construtor do TGrafo
 TGrafo::TGrafo(int n, std::string pokeGraphType) {
     this->n = n;
     this->m = 0;
