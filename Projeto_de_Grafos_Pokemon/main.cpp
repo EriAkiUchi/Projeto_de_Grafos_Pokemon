@@ -85,6 +85,7 @@ int main() {
 	TGrafo grafoReduzidoNovo(0, "null");
 	//
 	std::string type;
+	std::string searchType;
 	int vertice_origem, vertice_chegada; float valor_aresta;
 	int categoria_conexidade;
 	int opcao = -1, opcaoArquivo = -1;
@@ -106,6 +107,7 @@ int main() {
 					<< "[10] Coloracao de Vertices por Sequencia\n"
 					<< "[11] Grau total de um tipo em todos os grafos\n"
 					<< "[12] Vantagens e Desvantagens de um dado tipo\n"
+					<< "[13] Avaliacao defensiva de cada grafo\n"
 					<< "[0] Encerrar a aplicacao\nOption: ";
 		std::cin >> opcao;
 		std::cin.ignore();
@@ -546,37 +548,65 @@ int main() {
 
 				std::cout << "Digite o tipo de vértice para verificar o grau: ";
 				std::cin >> type;
-				std::cout << "Grau total do vertice " << type << " no grafo de Steel\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Steel\n";
 				grafoSteel.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo de Ghost\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Ghost\n";
 				grafoGhost.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo de Grass\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Grass\n";
 				grafoGrass.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo de Fire\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo de Fire\n";
 				grafoFire.printVertexDegree(type);
-				std::cout << "Grau total do vertice " << type << " no grafo novo\n";
+				std::cout << "\nGrau total do vertice " << type << " no grafo novo\n";
 				grafoNovo.printVertexDegree(type);
 
 				break;
 
 			case 12:
-				std::string searchType;
+				
 				std::cout << "Enter the Pokemon type to search for weaknesses and advantages: ";
 				std::cin >> searchType;
 				std::cin.ignore();
 
 				std::cout << "Weaknesses and Advantages for type " << searchType << ":\n";
-				std::cout << "In Steel graph: \n";
+				std::cout << "\nIn Steel graph: \n";
 				grafoSteel.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In Ghost graph: \n";
+				std::cout << "\nIn Ghost graph: \n";
 				grafoGhost.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In Grass graph: \n";
+				std::cout << "\nIn Grass graph: \n";
 				grafoGrass.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In Fire graph: \n";
+				std::cout << "\nIn Fire graph: \n";
 				grafoFire.getWeaknessesAndAdvantages(searchType);
-				std::cout << "In the new graph: \n";
+				std::cout << "\nIn the new graph: \n";
 				grafoNovo.getWeaknessesAndAdvantages(searchType);
 				break;
+
+			case 13:
+				std::cout << "Seguem abaixo as somas das Fraquezas, Resistencias, Imunidades e Neutralidades de cada grafo.\n";
+				std::cout << "Quanto menor o valor, melhor defensivamente eh o tipo representado pelo grafo.\n";
+
+				std::cout << "\nContribuicao de cada interacao para o total da soma:\n"
+					<< "\nImunidade: 0"
+					<< "\nDupla Resistencia: 0.25"
+					<< "\nResistencia: 0.5"
+					<< "\nNeutralidade: 1"
+					<< "\nFraqueza: 2"
+					<< "\nDupla Fraqueza: 4\n";
+							
+				
+				
+				std::cout << "\nPontuacao defensiva de cada grafo:\n";
+
+				std::cout << "\nSteel: ";
+				grafoSteel.sumOfWeaknessesAndResistances();
+				std::cout << "\nGhost: ";
+				grafoGhost.sumOfWeaknessesAndResistances();
+				std::cout << "\nGrass: ";
+				grafoGrass.sumOfWeaknessesAndResistances();
+				std::cout << "\nFire: ";
+				grafoFire.sumOfWeaknessesAndResistances();
+				std::cout << "\n";
+				break;
+
 		}
 
 	} while (opcao != 0);

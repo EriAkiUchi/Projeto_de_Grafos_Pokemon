@@ -57,6 +57,7 @@ public:
 	void printVertexDegree(const std::string& type);
 	void getWeaknessesAndAdvantages(const std::string& type);
 	int findTypeIndex(const std::string& type);
+	void sumOfWeaknessesAndResistances();
 };
 
 #endif
